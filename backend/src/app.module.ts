@@ -5,6 +5,7 @@ import { DeptsModule } from './depts/depts.module';
 import { PropertyModule } from './property/property.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { RouterModule } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -19,6 +20,24 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       autoLoadEntities: true,
       synchronize: true,
     }),
+    RouterModule.register([
+      {
+        path: '/api/v1/dashtory',
+        module: DashtoryModule,
+      },
+      {
+        path: '/api/v1/finance',
+        module: FinanceModule,
+      },
+      {
+        path: '/api/v1/depts',
+        module: DeptsModule,
+      },
+      {
+        path: '/api/v1/property',
+        module: PropertyModule,
+      }
+    ]),
     DashtoryModule, 
     FinanceModule, 
     DeptsModule,
