@@ -34,6 +34,7 @@ docker-compose up
 Start the NestJS-Application by running the following commands:
 ``` bash
 cd backend/
+npm install
 npm run start:dev
 ```
 
@@ -41,6 +42,7 @@ npm run start:dev
 Lastly, launch the Angular-App through this commands:
 ``` bash
 cd frontend/
+npm install
 ng serve
 ```
 
