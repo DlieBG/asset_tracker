@@ -12,12 +12,14 @@ import { Price } from './entities/price.entity';
 import { Stock } from './entities/stock.entity';
 import { AccountService } from './services/account/account.service';
 import { AccountController } from './controllers/account/account.controller';
+import { BankService } from './services/bank/bank.service';
+import { BankController } from './controllers/bank/bank.controller';
 
 @Module({
     imports: [
         TypeOrmModule.forFeature([Bank, Contact, Account, Entry, Depot, Stock, Order, Dividend, Price, AccountBalanceView])
     ],
-    providers: [AccountService],
-    controllers: [AccountController],
+    providers: [AccountService, BankService],
+    controllers: [AccountController, BankController],
 })
 export class FinanceModule {}

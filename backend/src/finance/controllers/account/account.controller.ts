@@ -1,11 +1,12 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CreateAccountDto, UpdateAccountDto } from 'src/finance/dtos/account.dto';
 import { AccountBalanceView } from 'src/finance/entities/account-balance.view';
 import { Account } from 'src/finance/entities/account.entity';
 import { AccountService } from 'src/finance/services/account/account.service';
+import { DeleteResult } from 'typeorm';
 
-@ApiTags('account')
+@ApiTags('finance_account')
 @Controller('account')
 export class AccountController {
 
@@ -26,9 +27,14 @@ export class AccountController {
         return this.accountService.createAccount(account);
     }
 
-    @Put('/:id')
+    @Put()
     async updateAccount(@Body() account: UpdateAccountDto): Promise<Account> {
         return this.accountService.updateAccount(account);
+    }
+
+    @Delete('/:id')
+    async deleteAccount(@Param('id') id: number): Promise<DeleteResult> {
+        return this.accountService.deleteAccount(id);
     }
 
 }

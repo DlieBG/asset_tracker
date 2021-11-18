@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CreateAccountDto, UpdateAccountDto } from 'src/finance/dtos/account.dto';
 import { AccountBalanceView } from 'src/finance/entities/account-balance.view';
 import { Account } from 'src/finance/entities/account.entity';
-import { Repository, UpdateResult } from 'typeorm';
+import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 
 @Injectable()
 export class AccountService {
@@ -29,6 +29,10 @@ export class AccountService {
 
     async updateAccount(account: UpdateAccountDto): Promise<Account> {
         return this.accountRepository.save(account);
+    }
+
+    async deleteAccount(id: number): Promise<DeleteResult> {
+        return this.accountRepository.delete(id);
     }
 
 }

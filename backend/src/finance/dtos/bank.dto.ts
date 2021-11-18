@@ -1,6 +1,6 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty } from "@nestjs/swagger";
 
-export class CreateAccountDto {
+export class CreateBankDto {
 
     @ApiProperty()
     name: string;
@@ -8,12 +8,15 @@ export class CreateAccountDto {
     @ApiProperty({ required: false })
     description: string;
 
-    @ApiProperty()
-    bank: { id: number };
+    @ApiProperty({ required: false })
+    url: string;
+
+    @ApiProperty({ required: false })
+    address: string;
 
 }
 
-export class UpdateAccountDto {
+export class UpdateBankDto {
 
     @ApiProperty()
     id: number;
@@ -25,6 +28,9 @@ export class UpdateAccountDto {
     description: string;
 
     @ApiProperty({ required: false })
-    bank: { id: number };
+    url: string;
+
+    @ApiProperty({ required: false })
+    address: string;
 
 }

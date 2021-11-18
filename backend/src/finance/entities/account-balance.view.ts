@@ -6,7 +6,9 @@ import { Entry } from "./entry.entity";
     expression: `
         SELECT 
             a.*,
-            (SELECT SUM(amount) FROM entry WHERE "accountId" = a.id) as "entryBalance"  
+            (SELECT SUM(amount) FROM entry WHERE "accountId" = a.id) as "entryBalance",
+            (SELECT SUM(price) FROM "order" WHERE "accountId" = a.id) as "orderBalance",
+            (SELECT SUM(amount) FROM dividend WHERE "accountId" = a.id) as "dividendBalance"
         FROM account as a;
     `
 })
