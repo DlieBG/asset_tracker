@@ -14,12 +14,14 @@ import { AccountService } from './services/account/account.service';
 import { AccountController } from './controllers/account/account.controller';
 import { BankService } from './services/bank/bank.service';
 import { BankController } from './controllers/bank/bank.controller';
+import { ContactService } from './services/contact/contact.service';
+import { ContactController } from './controllers/contact/contact.controller';
 
 @Module({
     imports: [
         TypeOrmModule.forFeature([Bank, Contact, Account, Entry, Depot, Stock, Order, Dividend, Price, AccountBalanceView])
     ],
-    providers: [AccountService, BankService],
-    controllers: [AccountController, BankController],
+    providers: [AccountService, BankService, ContactService],
+    controllers: [AccountController, BankController, ContactController],
 })
 export class FinanceModule {}
