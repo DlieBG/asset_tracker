@@ -9,13 +9,22 @@ export class Dividend {
     id: number;
 
     @Column()
+    name: string;
+
+    @Column({ default: '' })
+    description: string;
+
+    @Column()
     amount: number;
 
     @Column({ default: new Date() })
     time: Date;
 
     @ManyToOne(type => Account, account => account.dividends)
-    account: Account;
+    creditAccount: Account;
+
+    @ManyToOne(type => Stock, stock => stock.creditDividends)
+    creditStock: Stock;
 
     @ManyToOne(type => Stock, stock => stock.dividends)
     stock: Stock;

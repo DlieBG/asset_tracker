@@ -17,6 +17,9 @@ export class Account {
 
     @Column({ default: '' })
     description: string;
+
+    @Column()
+    unit: string;
     
     @ManyToOne(type => Bank, bank => bank.accounts)
     bank: Bank;
@@ -30,7 +33,7 @@ export class Account {
     @OneToMany(type => Order, order => order.account)
     orders: Order[];
 
-    @OneToMany(type => Dividend, dividend => dividend.account)
+    @OneToMany(type => Dividend, dividend => dividend.creditAccount)
     dividends: Dividend[];
 
 }

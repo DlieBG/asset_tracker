@@ -13,7 +13,7 @@ export class Price {
     @Column({ default: new Date() })
     time: Date;
 
-    @ManyToOne(type => Stock, stock => stock.prices)
+    @ManyToOne(type => Stock, stock => stock.code)
     stock: Stock;
 
 }

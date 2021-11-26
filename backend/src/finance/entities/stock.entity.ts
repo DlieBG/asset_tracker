@@ -19,6 +19,9 @@ export class Stock {
     @Column({ default: '' })
     description: string;
 
+    @Column()
+    unit: string;
+
     @ManyToOne(type => Depot, depot => depot.stocks)
     depot: Depot;
 
@@ -27,6 +30,9 @@ export class Stock {
 
     @OneToMany(type => Dividend, dividend => dividend.stock)
     dividends: Dividend[];
+
+    @OneToMany(type => Dividend, dividend => dividend.creditStock)
+    creditDividends: Dividend[];
 
     @OneToMany(type => Price, price => price.stock)
     prices: Price[];
